@@ -31,16 +31,14 @@ public class StreamUpload {
         }
 
         SftpSession session = connectionInfo().getSession();
-
-        // Requires InputStream but FastByteArrayOutputStream has an InputStream parameter
-        InputStream resourceAsStream = fastByteArrayOutputStream.getInputStream();
-
+        
         String directory = "ftpReceive/";
         String filename = "autoready" + LocalDateTime.now() + ".txt";
 
         try {
             // Need to know file destination on the server
-            session.write(resourceAsStream, directory + filename);
+            // Requires InputStream but FastByteArrayOutputStream has an InputStream parameter
+            session.write(fastByteArrayOutputStream.getInputStream(), directory + filename);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
