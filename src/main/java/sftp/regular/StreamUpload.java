@@ -35,7 +35,6 @@ public class StreamUpload {
         // Requires InputStream but FastByteArrayOutputStream has an InputStream parameter
         InputStream resourceAsStream = fastByteArrayOutputStream.getInputStream();
 
-        // Will need to change directory for production
         String directory = "ftpReceive/";
         String filename = "autoready" + LocalDateTime.now() + ".txt";
 
